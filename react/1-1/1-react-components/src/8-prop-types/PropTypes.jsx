@@ -19,20 +19,22 @@ const Card = ({ name, image, price }) => {
   );
 };
 
-Card.propTypes = {
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string,
-  price: PropTypes.number.isRequired,
-};
+// Card.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   image: PropTypes.string,
+//   price: PropTypes.number.isRequired,
+// };
 
 export const CompWithPropTypes = () => (
   <>
-    {/* <Card /> */}
-    <Card name={42} />
-    <Card
+    <Card />
+
+    {/* <Card name={42} /> */}
+
+    {/* <Card
       name="Adam"
       image="https://www.lego.com/cdn/cs/set/assets/bltbbddf9140f849bb9/31212.png"
       price={999}
-    />
+    /> */}
   </>
 );

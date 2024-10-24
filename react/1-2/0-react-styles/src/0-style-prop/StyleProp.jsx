@@ -14,30 +14,31 @@ const pColor = (success) => {
   return "crimson";
 };
 
-// const variantStyles = (variant) => {
-//   switch (variant) {
-//     case "primary":
-//       return { color: "limegreen" };
-//     case "secondary":
-//       return { color: "orange" };
-//     case "info":
-//       return { color: "dodgerblue" };
-//     case "danger":
-//       return { color: "crimson" };
-//     case "warning":
-//       return { color: "goldenrod" };
-//     default:
-//       //   return { color: "limegreen" };
-//       throw new Error(`Invalid variant of "${variant}"`);
-//   }
-// };
+const variantStyles = (variant) => {
+  switch (variant) {
+    case "primary":
+      return { color: "limegreen" };
+    case "secondary":
+      return { color: "orange" };
+    case "info":
+      return { color: "dodgerblue" };
+    case "danger":
+      return { color: "crimson" };
+    case "warning":
+      return { color: "goldenrod" };
+    default:
+      // return { color: "limegreen" };
+      throw new Error(`Invalid variant of "${variant}"`);
+  }
+};
+
 // const availableVariants = [
 //   "primary",
 //   "secondary",
 //   "info",
 //   "danger",
 //   "warning",
-//   "none",
+//   // "none",
 // ];
 
 const variants = {
@@ -56,48 +57,51 @@ export const StyleProp = () => {
   const isSuccess = Math.random() > 0.5;
   const color = isSuccess ? "limegreen" : "crimson";
 
-  //   const variant = "secondary";
+  // const variant = "secondary";
   const variant = randomElement(availableVariants);
 
-  if (variant === "danger")
-    return <h1 style={{ color: "crimson" }}>Danger!</h1>;
+  // if (variant === "danger")
+  //   return <h1 style={{ color: "crimson" }}>Danger!</h1>;
 
   return (
     <main>
       <p>{isSuccess.toString()}</p>
-      <div>
+      {/* <div>
         <h1 style={styles.title}>Style Prop in React - {color}</h1>
         <h1 style={title}>Style Prop in React - {pColor(isSuccess)}</h1>
         <h1 style={title}>Style Prop in React</h1>
-      </div>
-      <p
+      </div> */}
+
+      {/* <p
         style={{
           fontSize: "24px",
-          //   color: isSuccess ? "limegreen" : "crimson",
-          //   color,
-          color: pColor(isSuccess),
+          color: isSuccess ? "limegreen" : "crimson",
+          // color,
+          // color: pColor(isSuccess),
         }}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
         quae quas delectus similique consectetur quis nisi iure corrupti
         voluptas corporis sunt, laboriosam rem beatae culpa veniam possimus?
         Quas, soluta animi.
-      </p>
-      <div>
+      </p> */}
+
+      {/* <div>
         {isSuccess ? (
           <p style={{ color: "limegreen" }}>Success</p>
         ) : (
           <p style={{ color: "crimson" }}>Failure</p>
         )}
-      </div>
+      </div> */}
+
       <div>
         <h1>Variant - {variant}</h1>
-        {/* <p style={variantStyles(availableVariants)}>
+        <p style={variantStyles(variant)}>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
           molestiae maiores adipisci nemo! Modi aut suscipit, quidem veritatis
           quas saepe laborum est voluptatibus ex distinctio, reprehenderit ab
           inventore numquam doloribus.
-        </p> */}
+        </p>
         <p style={variants[variant]}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
           mollitia fugit, perferendis recusandae in corporis aperiam aliquid

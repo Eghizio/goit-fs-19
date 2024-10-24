@@ -11,11 +11,11 @@ import { rndBool } from "../utils";
 
 const isActive = rndBool();
 
-// const activeCls = isActive ? { active: true } : { inactive: true };
-const activeCls = { [isActive ? "active" : "inactive"]: true };
+const activeCls = isActive ? { active: true } : { inactive: true };
+// const activeCls = { [isActive ? "active" : "inactive"]: true };
 
 const className = clsx({
-  title: true,
+  // title: true,
   unused: false,
   danger: true,
 

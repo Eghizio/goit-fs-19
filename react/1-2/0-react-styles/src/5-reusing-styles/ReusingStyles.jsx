@@ -25,6 +25,12 @@ const css = {
 //   </button>
 // );
 
+// const Button = ({ children, variant }) => (
+//   <button className="btn" style={css[variant]}>
+//     {children}
+//   </button>
+// );
+
 // const Button = ({ children, info, danger }) => {
 //   const classNames = clsx({
 //     btn: true,
@@ -34,12 +40,6 @@ const css = {
 
 //   return <button className={classNames}>{children}</button>;
 // };
-
-// const Button = ({ children, variant }) => (
-//   <button className="btn" style={css[variant]}>
-//     {children}
-//   </button>
-// );
 
 /* CSS variants */
 // const Button = ({ children, className }) => (
@@ -91,6 +91,7 @@ export const ReusingStyles = () => {
         </Button> */}
 
         <DangerButton>Watch out for spiders!</DangerButton>
+
         <InfoButton>Boars ahead!</InfoButton>
       </div>
     </main>

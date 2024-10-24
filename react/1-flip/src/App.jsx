@@ -1,3 +1,5 @@
+import { examplePostData, Post } from "./components/Post/Post";
+
 const Common = ({ id, children }) => children;
 
 const Todo = () => (
@@ -16,11 +18,11 @@ const Todo = () => (
         Statystyki aktualnego uzytkownika:
         <ol>
           <li>Ilość postów</li>
-
-          <li>Ilość polubień</li>
-          <li>Ilość komentarzy</li>
-          <li>Ilość udostępnień</li>
-
+          <Common id="Liczniki">
+            <li>Ilość polubień</li>
+            <li>Ilość komentarzy</li>
+            <li>Ilość udostępnień</li>
+          </Common>
           <li>Ranga popularności</li>
         </ol>
       </li>
@@ -34,10 +36,12 @@ const Todo = () => (
               <li>
                 Nagłówek:
                 <ol>
-                  <li>Nazwa uzytkownika</li>
-                  <li>Avatar</li>
-                  <li>Data publikacji</li>
-                  <li>Przycisk opcji do rozwinięcia</li>
+                  <Common id="Informacje o autorze">
+                    <li>Nazwa uzytkownika</li>
+                    <li>Avatar</li>
+                    <li>Data publikacji</li>
+                    <li>Przycisk opcji do rozwinięcia</li>
+                  </Common>
                 </ol>
               </li>
 
@@ -52,11 +56,12 @@ const Todo = () => (
           <li>
             Lista komentarzy:
             <ol>
-              <li>Nazwa uzytkownika</li>
-              <li>Avatar</li>
-              <li>Data publikacji</li>
-              <li>Przycisk opcji do rozwinięcia</li>
-
+              <Common id="Informacje o autorze">
+                <li>Nazwa uzytkownika</li>
+                <li>Avatar</li>
+                <li>Data publikacji</li>
+                <li>Przycisk opcji do rozwinięcia</li>
+              </Common>
               <li>Treść komentarza</li>
               <li>Ilość polubień</li>
             </ol>
@@ -71,12 +76,26 @@ const Todo = () => (
   </article>
 );
 
+// Replace for data from `/data` and map it to props shape.
+const posts = Array.from({ length: 5 }, () => examplePostData);
+
 export const App = () => {
   return (
     <main>
       <h1>Hello there</h1>
 
-      <Todo />
+      <details>
+        <summary>Todo</summary>
+        <Todo />
+      </details>
+
+      <section
+        style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+      >
+        {posts.map((post, i) => (
+          <Post key={i} post={post} />
+        ))}
+      </section>
     </main>
   );
 };

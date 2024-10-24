@@ -28,7 +28,10 @@ export const Props = () => {
         image="https://media.bunches.co.uk/products/586x586/fmauvm-category.jpg"
         price={69}
       />
+
       <Card name={book.name} image={book.image} price={book.price} />
+
+      <Card {...book} />
     </main>
   );
 };

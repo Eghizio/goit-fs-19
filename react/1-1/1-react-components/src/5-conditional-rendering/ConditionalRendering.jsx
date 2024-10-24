@@ -27,27 +27,28 @@ const UserAvatar = () => {
 // };
 
 export const ConditionalRendering = () => {
-  const isLoggedIn = Math.random() > 0.5;
-  // const isLoggedIn = true;
+  const isLoggedIn = true;
+  // const isLoggedIn = false;
+  // const isLoggedIn = Math.random() > 0.5;
 
-  const avatar = isLoggedIn ? <UserAvatar /> : "No avatar";
+  // const avatar = isLoggedIn ? <UserAvatar /> : "No avatar";
 
   // if (isLoggedIn) return <UserAvatar />;
-  // // return null;
+  // return null;
   // return <p>Please log in!</p>;
 
   return (
     <main>
-      {/* {isLoggedIn && <UserAvatar />} */}
+      {isLoggedIn && <UserAvatar />}
       {/* {0 && false} */}
 
       {/* {isLoggedIn ? <UserAvatar /> : null} */}
 
       {/* {isLoggedIn ? <UserAvatar /> : "User not logged in!"} */}
 
-      {/* {isLoggedIn ? <UserAvatar /> : <p>"User not logged in!"</p>} */}
+      {/* {isLoggedIn ? <UserAvatar /> : <p>User not logged in!</p>} */}
 
-      {avatar}
+      {/* {avatar} */}
     </main>
   );
 };

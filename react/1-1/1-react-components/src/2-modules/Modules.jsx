@@ -8,8 +8,8 @@ import {
 
 export const Modules = () => (
   <>
-    <Default />
-    {/* <Dupa /> */}
+    {/* <Default /> */}
+    <Dupa />
 
     <Named />
     <First />
