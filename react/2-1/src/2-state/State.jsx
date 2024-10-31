@@ -12,8 +12,10 @@ const Clicker = () => {
   const onClick = () => {
     clicks = clicks + 1;
 
-    // console.log(clicks);
+    console.log(clicks);
   };
+
+  console.log({ clicks });
 
   return (
     <button style={style.orange} onClick={onClick}>
@@ -23,23 +25,27 @@ const Clicker = () => {
 };
 
 const StatefullClicker = () => {
+  // let [clicks, setClicks] = useState(0);
   const [clicks, setClicks] = useState(0);
 
-  const onClick = () => {
-    clicks = clicks + 1; /* Illegal */
+  // const onClick = () => {
+  //   // clicks = clicks + 1; /* Illegal */
+  //   // console.log(clicks);
 
-    // setClicks(clicks + 1);
-    // console.log(clicks);
+  //   setClicks(clicks + 1);
+  //   // console.log(clicks);
+  //   setClicks(clicks + 1);
+  // };
+
+  console.log(clicks);
+
+  const increment = () => {
+    setClicks((previousState) => previousState + 1);
+    setClicks((previousState) => previousState + 1);
   };
 
-  //   console.log(clicks);
-
-  //   const increment = () => {
-  //     setClicks((previousState) => previousState + 1);
-  //   };
-
   return (
-    <button style={style.green} onClick={onClick}>
+    <button style={style.green} onClick={increment}>
       Clicked {clicks} times
     </button>
   );
@@ -60,6 +66,7 @@ const MulticolorCounter = ({ startingColor = "orange" }) => {
       <button style={style[color]} onClick={increment}>
         Counter value is {counter}
       </button>
+
       <label>
         <input
           type="checkbox"
@@ -82,7 +89,9 @@ const Counter = ({ startingValue, step }) => {
       <button style={style.red} type="button" onClick={decrement}>
         -
       </button>
+
       <span>{count}</span>
+
       <button style={style.green} type="button" onClick={increment}>
         +
       </button>

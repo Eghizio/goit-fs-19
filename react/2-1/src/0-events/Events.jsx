@@ -40,7 +40,11 @@ const Form = ({ formType = "Login" }) => {
   };
 
   return (
-    <form className="col border" onSubmit={handleSubmit} autoComplete="off">
+    <form
+      className="col border"
+      onSubmit={(event) => handleEvent(event)}
+      autoComplete="off"
+    >
       <h2>{formType}</h2>
 
       <label>
@@ -66,6 +70,7 @@ export const Events = () => {
       <h1>Events</h1>
 
       <Buttons />
+
       <Form formType="Login" />
       <Form formType="Register" />
     </main>

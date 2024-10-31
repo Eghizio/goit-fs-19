@@ -17,7 +17,15 @@ const FlexibleButton = ({ performOnClick, children }) => (
   </button>
 );
 
+const staticSpook = () => {
+  console.log("Spooky static skeleton!");
+};
+
 export const Callbacks = () => {
+  const spook = () => {
+    console.log("Spooky scaryy skeleton!");
+  };
+
   return (
     <main className="col wide-gap">
       <h1>Callbacks</h1>
@@ -39,6 +47,12 @@ export const Callbacks = () => {
 
         <FlexibleButton performOnClick={() => alert("Trick or Treat!")}>
           Gimme dem sweets!
+        </FlexibleButton>
+
+        <FlexibleButton performOnClick={spook}>Spook!</FlexibleButton>
+
+        <FlexibleButton performOnClick={staticSpook}>
+          Static Spook!
         </FlexibleButton>
       </div>
     </main>

@@ -13,7 +13,9 @@ const Counter = ({ count, increment, decrement, step }) => {
       <button style={style.red} type="button" onClick={() => decrement(step)}>
         -
       </button>
+
       <span>{count}</span>
+
       <button style={style.green} type="button" onClick={() => increment(step)}>
         +
       </button>
@@ -62,7 +64,7 @@ const Child = ({ changeNumber }) => {
   };
 
   return (
-    <>
+    <div className="col border">
       <form onSubmit={submitNumber}>
         <label className="col">
           New favorite number:
@@ -70,21 +72,31 @@ const Child = ({ changeNumber }) => {
         </label>
         <button type="submit">Change number</button>
       </form>
+
       <button type="button" onClick={randomNumber}>
         Random number
       </button>
-    </>
+    </div>
   );
 };
 
 const Parent = () => {
   const [favoriteNumber, setFavoriteNumber] = useState(42);
 
+  const limitedNumberChanger = (newNumber) => {
+    if (newNumber < 0 || newNumber > 100)
+      return alert("Number should be within 0 and 100.");
+
+    setFavoriteNumber(newNumber);
+  };
+
   return (
     <div className="col wide-gap">
       <h2>My favourite number is: {favoriteNumber}</h2>
 
       <Child changeNumber={setFavoriteNumber} />
+
+      <Child changeNumber={limitedNumberChanger} />
     </div>
   );
 };
