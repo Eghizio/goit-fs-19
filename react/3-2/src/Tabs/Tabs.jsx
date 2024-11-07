@@ -5,9 +5,12 @@ export const Tabs = ({ children }) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   const ref = useRef(document.title);
 
-  const displayedChild = children[selectedTabIndex];
+  const ChildrenArray = Children.toArray(children);
 
-  const componentName = displayedChild.type.name;
+  const displayedChild = ChildrenArray[selectedTabIndex];
+
+  const componentName =
+    displayedChild?.type?.name ?? (selectedTabIndex + 1).toString();
 
   useEffect(() => {
     document.title = `${componentName} - ${ref.current}`;
@@ -16,10 +19,7 @@ export const Tabs = ({ children }) => {
   const activeClass = (i) =>
     i === selectedTabIndex ? `${css["tab"]} ${css["active"]}` : css["tab"];
 
-  const tabs = Array.from(
-    { length: Children.toArray(children).length },
-    (_, i) => i
-  );
+  const tabs = Array.from({ length: ChildrenArray.length }, (_, i) => i);
 
   return (
     <>
