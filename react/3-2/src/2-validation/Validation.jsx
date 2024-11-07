@@ -45,6 +45,7 @@ export const Validation = () => {
   const handleSubmit = (values, actions) => {
     console.log(values);
     actions.resetForm();
+    actions.setSubmitting(false);
   };
 
   return (

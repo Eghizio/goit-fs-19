@@ -17,6 +17,8 @@ export const FormikInputFields = () => {
   const messageFieldId = useId();
   const rulesFieldId = useId();
 
+  console.log("Render", Date.now());
+
   const handleSubmit = (values, actions) => {
     console.log(values);
     actions.resetForm();
@@ -53,6 +55,7 @@ export const FormikInputFields = () => {
               type="email"
               name="email"
               placeholder="johndoe@email.com"
+              required
             />
           </div>
 
@@ -81,7 +84,7 @@ export const FormikInputFields = () => {
               className={css.input}
               id={messageFieldId}
               as="textarea"
-              rows="8"
+              rows="3"
               name="message"
               placeholder="Dear John. It is a nice movie. xoxo Savannah"
             />
