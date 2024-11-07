@@ -1,6 +1,9 @@
 import { Children, useEffect, useState, useRef } from "react";
 import css from "./Tabs.module.css";
 
+const getSelectedComponentName = (child, index) =>
+  child?.type?.name ?? (index + 1).toString();
+
 export const Tabs = ({ children }) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
   const ref = useRef(document.title);
@@ -9,8 +12,10 @@ export const Tabs = ({ children }) => {
 
   const displayedChild = ChildrenArray[selectedTabIndex];
 
-  const componentName =
-    displayedChild?.type?.name ?? (selectedTabIndex + 1).toString();
+  const componentName = getSelectedComponentName(
+    displayedChild,
+    selectedTabIndex
+  );
 
   useEffect(() => {
     document.title = `${componentName} - ${ref.current}`;
@@ -19,16 +24,20 @@ export const Tabs = ({ children }) => {
   const activeClass = (i) =>
     i === selectedTabIndex ? `${css["tab"]} ${css["active"]}` : css["tab"];
 
-  const tabs = Array.from({ length: ChildrenArray.length }, (_, i) => i);
+  const tabs = ChildrenArray.map((child, i) => ({
+    i,
+    name: getSelectedComponentName(child, i),
+  }));
 
   return (
     <>
       <header className={css["tab-bar"]}>
-        {tabs.map((i) => (
+        {tabs.map(({ i, name }) => (
           <span
             key={i}
             className={activeClass(i)}
             onClick={() => setSelectedTabIndex(i)}
+            title={name}
           >
             {i + 1}
           </span>
