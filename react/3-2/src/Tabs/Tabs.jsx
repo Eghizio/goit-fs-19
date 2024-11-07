@@ -1,11 +1,12 @@
-import { Children, useEffect, useState, useRef } from "react";
+import { Children, useEffect, useRef } from "react";
 import css from "./Tabs.module.css";
+import { useLocalStorage } from "./useLocalStorage";
 
 const getSelectedComponentName = (child, index) =>
   child?.type?.name ?? (index + 1).toString();
 
 export const Tabs = ({ children }) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+  const [selectedTabIndex, setSelectedTabIndex] = useLocalStorage(0);
   const ref = useRef(document.title);
 
   const ChildrenArray = Children.toArray(children);
