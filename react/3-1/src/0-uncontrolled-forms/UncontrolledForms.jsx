@@ -80,7 +80,7 @@ const CallbackAuthForms = () => {
   );
 
   const register = (user) => {
-    console.log(`Registered succsuccessfully:`, user);
+    console.log(`Registered successfully:`, user);
   };
 
   const login = (user) => {

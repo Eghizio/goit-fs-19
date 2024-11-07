@@ -61,7 +61,7 @@ const FormWithFieldIdentifiers = ({ label, uponSubmission }) => {
       <FormField label="Username" type="text" name="username" />
       <FormField label="Password" type="password" name="password" />
 
-      <button className="green" type="button">
+      <button className="green" type="submit">
         {label}
       </button>
     </form>
@@ -100,6 +100,7 @@ export const FieldIdentifier = () => {
         <h2>Forms with field identifiers</h2>
 
         <FormWithFieldIdentifiers label="Login" onSubmit={onSubmit} />
+        {/* <FormWithFieldIdentifiers label="Login" onSubmit={onSubmit} /> */}
       </section>
     </main>
   );

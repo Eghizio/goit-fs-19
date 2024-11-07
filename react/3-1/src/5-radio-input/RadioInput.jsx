@@ -22,13 +22,7 @@ const UncontrolledRadio = ({ label, uponSubmission }) => {
       </label>
 
       <label htmlFor="server2">
-        <input
-          type="radio"
-          name="server"
-          value="s2"
-          id="server2"
-          defaultChecked
-        />
+        <input type="radio" name="server" value="s2" id="server2" />
         Feniks
       </label>
 
@@ -81,7 +75,8 @@ const allServers = [
 ];
 
 const ControlledRadio = ({ label, uponSubmission }) => {
-  const [server, setServer] = useState(allServers.at(-1).id);
+  const [server, setServer] = useState(allServers.at(-1).id); // Will fail with empty array.
+  // const [server, setServer] = useState(allServers?.at(-1)?.id ?? "");
 
   const onSubmit = (event) => {
     event.preventDefault();

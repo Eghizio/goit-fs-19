@@ -116,6 +116,7 @@ const ControlledRegisterPlayerForm = ({ label, uponSubmission }) => {
 
     setUsername("");
     setPassword("");
+    setServer("");
   };
 
   const allServers = [

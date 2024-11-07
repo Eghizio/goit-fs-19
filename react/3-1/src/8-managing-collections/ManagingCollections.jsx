@@ -17,9 +17,10 @@ const AddFriendForm = ({ addFriend }) => {
       <label htmlFor={id}>
         Friend name:
         <input
+          id={id}
           type="text"
           name="name"
-          id={id}
+          placeholder="Friends name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
@@ -41,9 +42,10 @@ const SearchBar = ({ query, updateSearch }) => {
     <label htmlFor={id}>
       Search friend:
       <input
-        type="text"
-        name="name"
         id={id}
+        type="text"
+        name="search"
+        placeholder="Friends name"
         value={query}
         onChange={(e) => updateSearch(e.target.value)}
       />
@@ -54,6 +56,7 @@ const SearchBar = ({ query, updateSearch }) => {
 const FriendsList = ({ friends, deleteFriend }) => (
   <section className="col">
     <h2>Friends list:</h2>
+
     <ul>
       {friends.length === 0 ? (
         <p>Seems like you have no friends. Make some!</p>

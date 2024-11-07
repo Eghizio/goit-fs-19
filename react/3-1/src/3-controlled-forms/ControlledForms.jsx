@@ -50,8 +50,8 @@ const ControlledAuthForm = ({ label, uponSubmission }) => {
   const [password, setPassword] = useState("");
 
   const onUsernameChange = (event) => {
-    const value = event.target.value.trim(); // No spaces hehe.
-    // const value = event.target.value;
+    // const value = event.target.value.trim(); // No spaces hehe.
+    const value = event.target.value;
 
     console.log("Username:", value);
 

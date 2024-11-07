@@ -88,7 +88,14 @@ const EmailNewsletterForm = ({
   );
 };
 
-const initialValues = {};
+const initialValues = {
+  // username: "",
+  // password: "",
+  // tos: false,
+  // email: "",
+  // category: "programming",
+  // subscription: "weekly",
+};
 
 const getValue = (target) =>
   ["checkbox"].includes(target.type) ? target.checked : target.value;
@@ -100,6 +107,7 @@ export const GenericForm = () => {
     event.preventDefault();
     console.log("Submitted: ", values);
     setValues(initialValues);
+    event.target.reset();
   };
 
   const onInputChange = (event) => {
