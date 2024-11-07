@@ -21,3 +21,19 @@
   border: 2px solid red;
   padding: 1rem;
 }
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+.green {
+  color: limegreen;
+}
+
+.blue {
+  color: dodgerblue;
+}
