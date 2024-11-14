@@ -38,8 +38,8 @@ const NaiveWay = () => {
     .then((data) => data.json())
     .then(logThrough)
     .then(setUsers)
-    .then(bumpCounter)
-    .catch(console.error);
+    .catch(console.error)
+    .finally(bumpCounter);
 
   return (
     <section className="border">
@@ -65,8 +65,8 @@ const ProperWay = () => {
       .then((data) => data.json())
       .then(logThrough)
       .then(setUsers)
-      .then(bumpCounter)
-      .catch(console.error);
+      .catch(console.error)
+      .finally(bumpCounter);
   }, []); /* Don't put `users` here - Rerender Loop */
 
   return (
@@ -106,9 +106,11 @@ const HackernewsArticles = () => {
 
   useEffect(() => {
     /* Callbacks */
-    get(HACKERNEWS_API_URL).then(mapArticles).then(setArticles);
+    sleep(3_000).then(() =>
+      get(HACKERNEWS_API_URL).then(mapArticles).then(setArticles)
+    );
 
-    // /* Async function */
+    /* Async function */
     // const fetchArticles = async () => {
     //   await sleep(5_000);
     //   const data = await get(HACKERNEWS_API_URL);
@@ -116,7 +118,6 @@ const HackernewsArticles = () => {
     //   setArticles(mappedArticles);
     // };
     // fetchArticles();
-
     // /* IIFE */
     // (async () => {
     //   await sleep(5_000);

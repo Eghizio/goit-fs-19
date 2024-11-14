@@ -34,6 +34,8 @@ const FaultyHackernews = ({ delay = 10_000, withError = false }) => {
   console.log("Hackernews Articles:", articles);
   console.log({ isLoading });
 
+  console.log({ withError });
+
   const loadArticles = async () => {
     setIsLoading(true);
 

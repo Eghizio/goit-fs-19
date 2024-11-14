@@ -1,6 +1,6 @@
 export const HttpClient = {
   async get(url, options = {}) {
-    const response = await fetch(url, options);
+    const response = await fetch(url, options); // AbortController.signal.
 
     if (!response.ok) {
       throw new Error(
