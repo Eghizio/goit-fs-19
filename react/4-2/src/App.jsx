@@ -1,7 +1,14 @@
 import { Tabs } from "./Tabs/Tabs";
+import { Memoization } from "./0-memoization/Memoization";
+import { Ref } from "./1-ref/Ref";
+import { CustomHooks } from "./2-custom-hooks/CustomHooks";
+import { Context } from "./3-context/Context";
 
 export const App = () => (
   <Tabs>
-    <h1>Custom Hooks</h1>
+    <Memoization />
+    <Ref />
+    <CustomHooks />
+    <Context />
   </Tabs>
 );

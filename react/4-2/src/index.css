@@ -37,3 +37,8 @@
 .blue {
   color: dodgerblue;
 }
+
+.hoverable:hover {
+  cursor: pointer;
+  filter: brightness(0.75);
+}
