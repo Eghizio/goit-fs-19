@@ -1,20 +1,20 @@
-import css from "./Styles.module.css";
-import { FaCartPlus, FaShoppingCart } from "react-icons/fa";
-import { useCart } from "../Context";
+import { useState } from "react";
 import { TopBar } from "./TopBar";
 import { ProductsList } from "./ProductsList";
 import { Checkout } from "./Checkout";
+import css from "./Styles.module.css";
 
 import products from "../data/products.json";
 
 export const Shop = () => {
-  const {} = useCart();
+  const [isCheckout, setIsCheckout] = useState(false);
+
+  const setPage = (page) => setIsCheckout(page === "checkout");
 
   return (
-    <div>
-      <TopBar />
-      <ProductsList products={products} />
-      {/* <Checkout /> */}
+    <div className={css.shop}>
+      <TopBar setPage={setPage} />
+      {isCheckout ? <Checkout /> : <ProductsList products={products} />}
     </div>
   );
 };

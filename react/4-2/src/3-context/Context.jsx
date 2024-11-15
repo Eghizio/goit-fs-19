@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-
 import { Shop } from "./components/Shop";
 
 const CartContext = createContext(undefined);
@@ -18,18 +17,18 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [searchFilter, setSearchFilter] = useState("");
 
-  const addProduct = (product) => {
-    setCart((cart) => [...cart, product]);
+  const addProduct = (productId) => {
+    setCart((cart) => [...cart, productId]);
   };
 
   const removeProduct = (productId) => {
-    setCart((cart) => cart.filter((product) => product.id !== productId));
+    setCart((cart) => cart.filter((id) => id !== productId));
   };
 
   const checkout = () => {
-    const products = [...cart];
+    const productIds = [...cart];
     setCart([]);
-    return products;
+    return productIds;
   };
 
   const productsInCart = cart.length;
@@ -44,9 +43,7 @@ export const CartProvider = ({ children }) => {
     updateSearchFilter: setSearchFilter,
   };
 
-  return (
-    <CartContext.Provider value={{ value }}>{children}</CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 
 export const Context = () => {
@@ -58,7 +55,7 @@ export const Context = () => {
         <Shop />
       </CartProvider>
 
-      <footer>
+      <footer className="col">
         <span>Shop @ 2024</span>
       </footer>
     </main>

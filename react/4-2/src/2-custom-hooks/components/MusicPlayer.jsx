@@ -39,6 +39,7 @@ export const MusicPlayer = ({ source }) => {
         (audio.currentTime / audio.duration) *
         100
       ).toFixed(2);
+
       console.log(`${audioProgress}%`);
 
       if (ref.current) {

@@ -4,7 +4,7 @@ export const useColorPicker = () => {
   const [color, setColor] = useState(null);
 
   useEffect(() => {
-    const pickElementColor = ({ target, clientX, clientY }) => {
+    const pickElementColor = ({ target }) => {
       const c = target.style.backgroundColor ?? target.style.color;
 
       setColor(c ?? null);

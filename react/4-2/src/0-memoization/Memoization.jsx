@@ -51,6 +51,8 @@ const Fibonacci = ({ nth = 42 }) => {
 const MemoizedFibonacci = ({ nth = 42 }) => {
   if (isNaN(nth)) nth = 1;
 
+  console.log("Rerendering Memoized Fibonacci...");
+
   const start = performance.now();
   const answer = useMemo(() => {
     console.log(`[${Date.now()}] Computing fibonacci(${nth})...`);
@@ -120,7 +122,8 @@ const MemoizationExplained = () => {
 };
 
 export const Memoization = () => {
-  const [n, setN] = useState(42);
+  const [n, setN] = useState(7);
+  const [x, setX] = useState(7);
 
   return (
     <main className="col wide-gap">
@@ -149,7 +152,7 @@ export const Memoization = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            setN(e.target.elements["n"].valueAsNumber);
+            setX(e.target.elements["n"].valueAsNumber);
           }}
         >
           <input
@@ -158,12 +161,12 @@ export const Memoization = () => {
             step="1"
             min="0"
             max="50"
-            defaultValue={n}
+            defaultValue={x}
           />
           <button type="submit">Compute!</button>
         </form>
 
-        <MemoizedFibonacci nth={n} />
+        <MemoizedFibonacci nth={x} />
       </section>
     </main>
   );

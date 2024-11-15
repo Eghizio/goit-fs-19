@@ -12,6 +12,8 @@ const Box = ({ id }) => (
   />
 );
 
+const MemoizedBox = memo(Box);
+
 export const Boxes = ({ amount }) => {
   const ref = useRef(null);
   const color = useColorPicker();
