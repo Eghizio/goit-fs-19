@@ -6,9 +6,11 @@ const getSelectedComponentName = (child, index) =>
   child?.type?.name ?? (index + 1).toString();
 
 export const Tabs = ({ children }) => {
-  // Todo: Handle iff the last selected index from other App is out of children array boundary.
+  // Todo: Handle if the last selected index from other App is out of children array boundary.
   const [selectedTabIndex, setSelectedTabIndex] = useLocalStorage(0);
   const ref = useRef(document.title);
+
+  console.clear();
 
   const ChildrenArray = Children.toArray(children);
 
