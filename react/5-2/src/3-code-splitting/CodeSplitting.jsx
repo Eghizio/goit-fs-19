@@ -73,6 +73,10 @@ const LazyLoadingAndSuspense = () => (
     <li>{`Lazily loaded pages.`}</li>
     <li>{`Lazily loaded <ProductSummary /> in <Checkout /> & <ProductDetails /> page.`}</li>
     <li>{`React <Suspense /> with <Spinner /> as fallback.`}</li>
+    <li>
+      Downside of using suspense in the SPA (Single Page Application) - turn of
+      the server and try to navigate
+    </li>
   </ul>
 );
 
