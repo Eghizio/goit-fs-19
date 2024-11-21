@@ -32,16 +32,18 @@ const links = [
 const VercelJson = () => (
   <section>
     <h3>vercel.json</h3>
+
     <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer">
       🔗 Vercel website
     </a>
+
     <pre>
       {`
-    {
-      "rewrites":  [
-        {"source": "/(.*)", "destination": "/"}
-      ]
-    }
+          {
+            "rewrites":  [
+              {"source": "/(.*)", "destination": "/"}
+            ]
+          }
     `}
     </pre>
   </section>

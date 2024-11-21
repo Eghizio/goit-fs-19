@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useCounter } from "../useCounter";
 
 const style = {
@@ -27,8 +27,6 @@ export const Timer = ({ rainbow = false }) => {
     const interval = setInterval(increment, 1_000);
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {}, []);
 
   return <article style={style}>{count}</article>;
 };

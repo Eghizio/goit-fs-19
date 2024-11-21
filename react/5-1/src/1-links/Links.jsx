@@ -32,7 +32,9 @@ const PersistentNavigation = ({ navigationLinks }) => (
         <li key={link}>
           <NavLink
             to={link}
-            className={({ isActive }) => (isActive ? "green" : "")}
+            className={({ isActive }) =>
+              isActive ? "hoverable green" : "hoverable"
+            }
           >
             {link}
           </NavLink>
@@ -45,20 +47,20 @@ const PersistentNavigation = ({ navigationLinks }) => (
 export const Links = () => (
   <>
     <h1>Links</h1>
-    <ReloadingNavigation navigationLinks={links} />
+    {/* <ReloadingNavigation navigationLinks={links} /> */}
 
     <Timer />
 
     <BrowserRouter
       future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
     >
-      {/* <PersistentNavigation navigationLinks={links} /> */}
+      <PersistentNavigation navigationLinks={links} />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
 
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </>

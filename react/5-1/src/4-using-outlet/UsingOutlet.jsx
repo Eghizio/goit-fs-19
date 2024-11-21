@@ -57,18 +57,20 @@ const Layout = () => (
   <main>
     <h2>Layout</h2>
     <Navigation navigationLinks={links} />
+    <Timer />
 
     <Outlet />
   </main>
 );
 
 // https://reactrouter.com/en/main/components/outlet
+// https://remix.run/_docs/routing
 export const UsingOutlet = () => (
   <div className={css.app}>
     <h1>Using Outlet</h1>
     <Timer />
 
-    <BrowserRouter
+    {/* <BrowserRouter
       future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
     >
       <Routes>
@@ -87,6 +89,58 @@ export const UsingOutlet = () => (
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> */}
+
+    {/* <RouterSeperateLayouts /> */}
+    <RouterSharedLayout />
   </div>
+);
+
+const RouterSeperateLayouts = () => (
+  <BrowserRouter
+    future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+  >
+    <Routes>
+      <Route exact path="/" element={<Layout />}>
+        <Route path="blog" element={<Blog />} />
+        <Route path="about" element={<About />} />
+      </Route>
+
+      {/* <Route path="/products"> */}
+      {/* Products have their own Layout. */}
+      <Route path="/products" element={<Layout />}>
+        <Route path="" element={<Products />} />
+        <Route path=":category">
+          <Route path="" element={<ProductCategory />} />
+          <Route path=":productId" element={<ProductDetails />} />
+        </Route>
+      </Route>
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </BrowserRouter>
+);
+
+const RouterSharedLayout = () => (
+  <BrowserRouter
+    future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+  >
+    <Routes>
+      <Route exact path="/" element={<Layout />}>
+        <Route path="blog" element={<Blog />} />
+        <Route path="about" element={<About />} />
+
+        {/* Products inside `/` */}
+        <Route path="/products">
+          <Route path="" element={<Products />} />
+          <Route path=":category">
+            <Route path="" element={<ProductCategory />} />
+            <Route path=":productId" element={<ProductDetails />} />
+          </Route>
+        </Route>
+      </Route>
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </BrowserRouter>
 );

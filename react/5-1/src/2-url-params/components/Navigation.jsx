@@ -10,7 +10,9 @@ export const Navigation = ({ navigationLinks }) => (
           <li key={link}>
             <NavLink
               to={link}
-              className={({ isActive }) => (isActive ? "green" : "")}
+              className={({ isActive }) =>
+                isActive ? "hoverable green" : "hoverable"
+              }
             >
               {link}
             </NavLink>

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Counter } from "./components/Counter";
 import { Timer } from "./components/Timer";
 import { useCounter } from "./useCounter";
@@ -68,25 +68,25 @@ export const Routing = () => (
   </>
 );
 
-const router = createBrowserRouter(
-  [
-    {
-      path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/products",
-      element: <Products />,
-    },
-  ],
-  {
-    /* react-router-dom verions 7 shennanigans */
-    future: {
-      v7_fetcherPersist: true,
-      v7_normalizeFormMethod: true,
-      v7_partialHydration: true,
-      v7_relativeSplatPath: true,
-      v7_skipActionErrorRevalidation: true,
-    },
-  }
-);
+// const router = createBrowserRouter(
+//   [
+//     {
+//       path: "/",
+//       element: <Home />,
+//     },
+//     {
+//       path: "/products",
+//       element: <Products />,
+//     },
+//   ],
+//   {
+//     /* react-router-dom verions 7 shennanigans */
+//     future: {
+//       v7_fetcherPersist: true,
+//       v7_normalizeFormMethod: true,
+//       v7_partialHydration: true,
+//       v7_relativeSplatPath: true,
+//       v7_skipActionErrorRevalidation: true,
+//     },
+//   }
+// );
