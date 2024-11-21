@@ -38,7 +38,35 @@
   color: dodgerblue;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 .hoverable:hover {
   cursor: pointer;
   filter: brightness(0.75);
+}
+
+@keyframes spin {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+#spinner {
+  --size: 50px;
+  width: var(--size);
+  height: var(--size);
+  margin: 1rem auto;
+  border-radius: 50%;
+  border: 10px solid orange;
+  border-top-color: transparent;
+  animation: spin 1s infinite;
 }
