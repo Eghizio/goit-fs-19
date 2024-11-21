@@ -13,7 +13,7 @@ import { ThankYou } from "./pages/ThankYou";
 import { NotFound } from "./pages/NotFound";
 
 import { Header } from "./components/Header";
-import { SearchBar } from "./components/Searchbar";
+import { SearchBar } from "./components/SearchBar";
 import { GoBack } from "./components/GoBack";
 
 import { links } from "./routing/links";

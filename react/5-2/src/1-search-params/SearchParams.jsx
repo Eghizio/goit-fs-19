@@ -23,7 +23,7 @@ import { Navigation } from "./components/Navigation";
 import { TopBar } from "./components/TopBar";
 import { ProductSummary } from "./components/ProductSummary";
 import { Bar } from "./components/Bar";
-import { SearchBar } from "./components/Searchbar";
+import { SearchBar } from "./components/SearchBar";
 
 import { useProductsApi } from "./hooks/useProductsApi";
 

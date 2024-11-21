@@ -43,7 +43,7 @@ const ThankYou = lazyPage("ThankYou");
 const NotFound = lazyPage("NotFound");
 
 import { Header } from "./components/Header";
-import { SearchBar } from "./components/Searchbar";
+import { SearchBar } from "./components/SearchBar";
 import { GoBack } from "./components/GoBack";
 import { Spinner } from "./components/Spinner";
 
