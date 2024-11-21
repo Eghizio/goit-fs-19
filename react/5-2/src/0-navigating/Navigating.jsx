@@ -66,8 +66,8 @@ const Login = () => {
       <h2>Login</h2>
 
       <form onSubmit={loginUser} autoComplete="off">
-        <Input type="email" name="email" label="Email:" required />
-        <Input type="password" name="password" label="Password:" required />
+        <Input type="email" name="email" label="Email" required />
+        <Input type="password" name="password" label="Password" required />
 
         <button type="submit" disabled={isLoading}>
           Login

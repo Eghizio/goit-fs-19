@@ -32,6 +32,7 @@ import css from "./SearchParams.module.css";
 const links = [
   "/",
   "/products",
+  "/products?discount=abc",
   "/products/accessories",
   "/products/accessories/1001",
   "/products/apparel",

@@ -96,8 +96,8 @@ export const ProductCard = ({
         </p>
         <p>
           <Link
-            to={`/products/${category}/${id}`}
-            state={{ from: `/products/${category}` }}
+            to={`/products/${category}/${id}`.toLowerCase()}
+            state={{ from: `/products/${category}`.toLowerCase() }}
           >
             Details
           </Link>
