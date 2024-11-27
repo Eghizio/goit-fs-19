@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { tasksReducer } from "./tasks/reducer";
-import { filtersReducer } from "./filter/reducers";
+import { filtersReducer } from "./filter/reducer";
 
 export const rootReducer = (state = {}, action) => {
   return {
