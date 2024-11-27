@@ -51,6 +51,10 @@
   filter: brightness(0.75);
 }
 
+.striked {
+  text-decoration: line-through;
+}
+
 @keyframes spin {
   from {
     rotate: 0deg;
