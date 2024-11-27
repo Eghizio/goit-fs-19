@@ -22,18 +22,19 @@ import { PersistGate } from "redux-persist/integration/react";
 import { tasksReducer } from "./redux/slices/tasks";
 import { filtersReducer } from "./redux/slices/filter";
 
+const LOCAL_STORAGE_KEY = "redux-persist-localstorage-key";
+
 const userSlice = createSlice({
-  name: "users",
-  initialState: { user: null },
+  name: "user",
+  initialState: null,
   reducers: {
     login(state, action) {
-      console.log({ state, action });
-      state.user = action.payload;
+      state = action.payload;
       return state;
     },
     logout(state) {
-      state.user = null;
-      storage.removeItem("redux-persist-localstorage-key");
+      state = null;
+      storage.removeItem(LOCAL_STORAGE_KEY);
       return state;
     },
   },
@@ -41,8 +42,8 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(PURGE, (state) => {
       console.log("Purge", { state });
-      state.user = null;
-      // storage.removeItem("redux-persist-localstorage-key");
+      state = null;
+      // storage.removeItem(LOCAL_STORAGE_KEY);
       return state;
     });
   },
@@ -51,12 +52,12 @@ const userSlice = createSlice({
 const updatedRootReducer = combineReducers({
   tasks: tasksReducer,
   filters: filtersReducer,
-  users: userSlice.reducer,
+  user: userSlice.reducer,
 });
 
 /* https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist */
 const reduxPersistConfig = {
-  key: "redux-persist-localstorage-key",
+  key: LOCAL_STORAGE_KEY,
   version: 1,
   storage,
   blacklist: [
@@ -79,7 +80,7 @@ const store = configureStore({
 const persistor = persistStore(store);
 
 const UserProfile = () => {
-  const user = useSelector((state) => state.users.user);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   console.log({ user });
