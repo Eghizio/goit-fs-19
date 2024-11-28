@@ -15,11 +15,13 @@ const Button = ({ selected, children, ...props }) => {
 const StatusFilter = () => {
   const filter = useSelector((state) => state.filters.status);
 
+  const { ALL, ACTIVE, COMPLETED } = STATUS_FILTERS;
+
   return (
     <div>
-      <Button selected={filter === STATUS_FILTERS.ALL}>All</Button>
-      <Button selected={filter === STATUS_FILTERS.ACTIVE}>Active</Button>
-      <Button selected={filter === STATUS_FILTERS.COMPLETED}>Completed</Button>
+      <Button selected={filter === ALL}>All</Button>
+      <Button selected={filter === ACTIVE}>Active</Button>
+      <Button selected={filter === COMPLETED}>Completed</Button>
     </div>
   );
 };
@@ -71,8 +73,8 @@ const getTasks = (state) => state.tasks;
 const useTasksSelector = () => useSelector(getTasks);
 
 const TaskCounter = () => {
-  const tasks = useSelector(getTasks);
-  // const tasks = useTasksSelector();
+  // const tasks = useSelector(getTasks);
+  const tasks = useTasksSelector();
 
   const { active, completed } = tasks.reduce(
     (acc, task) => {

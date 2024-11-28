@@ -1,4 +1,4 @@
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { StatusFilter } from "./components/StatusFilter";
 import { TaskCounter } from "./components/TaskCounter";
