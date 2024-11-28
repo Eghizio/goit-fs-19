@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 import { Task } from "./Task";
-import { getTasks } from "../redux/selectors/tasks";
-import { getFilterStatus } from "../redux/selectors/filter";
+// import { getTasks } from "../redux/selectors/tasks";
+import { getTasks } from "../redux/slices/tasks";
+// import { getFilterStatus } from "../redux/selectors/filter";
+import { getFilterStatus } from "../redux/slices/filter";
 import { STATUS_FILTERS } from "../constants/filter";
 
 const getVisibleTasks = (tasks, statusFilter) => {

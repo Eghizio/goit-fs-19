@@ -10,25 +10,27 @@ export const StatusFilter = () => {
 
   const handleFilterChange = (filter) => dispatch(setStatusFilter(filter));
 
+  const { ALL, ACTIVE, COMPLETED } = STATUS_FILTERS;
+
   return (
     <div>
       <FilterButton
-        selected={filter === STATUS_FILTERS.ALL}
-        onClick={() => handleFilterChange(STATUS_FILTERS.ALL)}
+        selected={filter === ALL}
+        onClick={() => handleFilterChange(ALL)}
       >
         All
       </FilterButton>
 
       <FilterButton
-        selected={filter === STATUS_FILTERS.ACTIVE}
-        onClick={() => handleFilterChange(STATUS_FILTERS.ACTIVE)}
+        selected={filter === ACTIVE}
+        onClick={() => handleFilterChange(ACTIVE)}
       >
         Active
       </FilterButton>
 
       <FilterButton
-        selected={filter === STATUS_FILTERS.COMPLETED}
-        onClick={() => handleFilterChange(STATUS_FILTERS.COMPLETED)}
+        selected={filter === COMPLETED}
+        onClick={() => handleFilterChange(COMPLETED)}
       >
         Completed
       </FilterButton>

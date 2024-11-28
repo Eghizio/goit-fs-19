@@ -36,8 +36,14 @@ export const tasksSlice = createSlice({
       return state;
     },
   },
+
+  selectors: {
+    getTasks: (tasks) => tasks,
+  },
 });
 
 export const { addTask, deleteTask, toggleCompleted } = tasksSlice.actions;
+
+export const { getTasks } = tasksSlice.selectors;
 
 export const tasksReducer = tasksSlice.reducer;

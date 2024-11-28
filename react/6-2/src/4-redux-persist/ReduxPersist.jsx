@@ -19,6 +19,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage"; /* Defaults to localStorage */
 import { PersistGate } from "redux-persist/integration/react";
+
 import { tasksReducer } from "./redux/slices/tasks";
 import { filtersReducer } from "./redux/slices/filter";
 
@@ -46,6 +47,9 @@ const userSlice = createSlice({
       // storage.removeItem(LOCAL_STORAGE_KEY);
       return state;
     });
+  },
+  selectors: {
+    getUser: (user) => user,
   },
 });
 
@@ -80,7 +84,7 @@ const store = configureStore({
 const persistor = persistStore(store);
 
 const UserProfile = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector(userSlice.selectors.getUser);
   const dispatch = useDispatch();
 
   console.log({ user });
@@ -153,9 +157,14 @@ const App = () => {
   );
 };
 
+const Spinner = () => {
+  console.log("Loading...");
+  return <div id="spinner" />;
+};
+
 export const ReduxPersist = () => (
   <Provider store={store}>
-    <PersistGate loading={<div className="spinner" />} persistor={persistor}>
+    <PersistGate loading={<Spinner />} persistor={persistor}>
       <h1>Redux Toolkit (RTK) + Redux Persist</h1>
       <App />
     </PersistGate>

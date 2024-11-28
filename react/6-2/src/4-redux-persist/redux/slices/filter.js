@@ -13,8 +13,14 @@ const filtersSlice = createSlice({
       state.status = action.payload;
     },
   },
+
+  selectors: {
+    getFilterStatus: (filters) => filters.status,
+  },
 });
 
 export const { setStatusFilter } = filtersSlice.actions;
+
+export const { getFilterStatus } = filtersSlice.selectors;
 
 export const filtersReducer = filtersSlice.reducer;
