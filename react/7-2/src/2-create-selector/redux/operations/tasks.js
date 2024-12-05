@@ -42,6 +42,7 @@ export const toggleCompleted = createAsyncThunk(
   async (task, thunkAPI) =>
     request(`/tasks/${task.id}`, {
       method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ completed: !task.completed }),
     }).catch((error) => thunkAPI.rejectWithValue(error.message))
 );

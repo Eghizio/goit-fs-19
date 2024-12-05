@@ -15,12 +15,12 @@ const filtersSlice = createSlice({
   },
 
   selectors: {
-    getFilterStatus: (filters) => filters.status,
+    selectFilterStatus: (filters) => filters.status,
   },
 });
 
 export const { setStatusFilter } = filtersSlice.actions;
 
-export const { getFilterStatus } = filtersSlice.selectors;
+export const { selectFilterStatus } = filtersSlice.selectors;
 
 export const filtersReducer = filtersSlice.reducer;

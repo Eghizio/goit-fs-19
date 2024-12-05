@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "./redux/store";
-import { getError, getIsLoading } from "./redux/slices/tasks";
+import { selectError, selectIsLoading } from "./redux/slices/tasks";
 import { TaskForm } from "./components/TaskForm";
 import { TaskCounter } from "./components/TaskCounter";
 import { StatusFilter } from "./components/StatusFilter";
@@ -10,8 +10,8 @@ import { fetchTasks } from "./redux/operations/tasks";
 
 const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchTasks());
@@ -38,7 +38,7 @@ const App = () => {
 
 export const SelectorNaming = () => (
   <Provider store={store}>
-    <h1>Async Thunk</h1>
+    <h1>Selector Naming</h1>
     <App />
   </Provider>
 );

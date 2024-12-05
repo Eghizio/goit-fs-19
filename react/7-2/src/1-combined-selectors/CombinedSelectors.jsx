@@ -38,7 +38,7 @@ const App = () => {
 
 export const CombinedSelectors = () => (
   <Provider store={store}>
-    <h1>Async Thunk</h1>
+    <h1>Combined Selectors</h1>
     <App />
   </Provider>
 );
