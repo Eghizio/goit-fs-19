@@ -1,0 +1,15 @@
+.priority {
+  text-decoration: underline;
+}
+
+.priority.top {
+  color: red;
+}
+
+.priority.medium {
+  color: orange;
+}
+
+.priority.low {
+  color: limegreen;
+}
