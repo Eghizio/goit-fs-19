@@ -6,7 +6,16 @@ import {
   toggleCompleted,
 } from "../operations/tasks";
 
-/* TODO: Shared handle pending & rejected */
+const onPending = (state) => {
+  state.isLoading = true;
+  state.error = null;
+};
+
+const onError = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
 export const tasksSlice = createSlice({
   name: "tasks",
 
@@ -18,61 +27,40 @@ export const tasksSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTasks.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
+      .addCase(fetchTasks.pending, onPending)
       .addCase(fetchTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(fetchTasks.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(addTask.pending, (state) => {
-        state.isLoading = true;
-      })
+      .addCase(fetchTasks.rejected, onError)
+
+      .addCase(addTask.pending, onPending)
       .addCase(addTask.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
         state.items.push(action.payload);
       })
-      .addCase(addTask.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(deleteTask.pending, (state) => {
-        state.isLoading = true;
-      })
+      .addCase(addTask.rejected, onError)
+
+      .addCase(deleteTask.pending, onPending)
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
         const index = state.items.findIndex(
           (task) => task.id === action.payload.id
         );
         state.items.splice(index, 1);
       })
-      .addCase(deleteTask.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(toggleCompleted.pending, (state) => {
-        state.isLoading = true;
-      })
+      .addCase(deleteTask.rejected, onError)
+
+      .addCase(toggleCompleted.pending, onPending)
       .addCase(toggleCompleted.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
         const index = state.items.findIndex(
           (task) => task.id === action.payload.id
         );
         state.items.splice(index, 1, action.payload);
       })
-      .addCase(toggleCompleted.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+      .addCase(toggleCompleted.rejected, onError);
   },
 
   selectors: {

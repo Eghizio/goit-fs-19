@@ -3,6 +3,7 @@ import { fetchTasks } from "../operations/tasks";
 
 export const tasksSlice = createSlice({
   name: "tasks",
+
   initialState: {
     items: [],
     isLoading: false,
@@ -17,7 +18,6 @@ export const tasksSlice = createSlice({
       })
       .addCase(fetchTasks.fulfilled, (state, action) => {
         state.isLoading = false;
-        // state.error = null;
         state.items = action.payload;
       })
       .addCase(fetchTasks.rejected, (state, action) => {

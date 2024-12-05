@@ -10,7 +10,8 @@ const getAllTasks = async () => {
   await sleep(2_500);
   if (Math.random() < 0.5) throw new Error("Ooopsie");
 
-  const response = await fetch(`${import.meta.env["VITE_API_URL"]}/tasks`);
+  const url = `${import.meta.env["VITE_API_URL"]}/tasks`;
+  const response = await fetch(url);
   const data = await response.json();
 
   return data;

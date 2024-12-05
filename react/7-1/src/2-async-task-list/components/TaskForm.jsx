@@ -8,8 +8,9 @@ export const TaskForm = () => {
     event.preventDefault();
 
     const form = event.target;
+    const text = form.elements["text"].value;
 
-    dispatch(addTask(form.elements["text"].value));
+    dispatch(addTask(text));
 
     form.reset();
   };

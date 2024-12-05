@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const tasksSlice = createSlice({
   name: "tasks",
+
   initialState: {
     items: [],
     isLoading: false,
@@ -15,7 +16,6 @@ export const tasksSlice = createSlice({
     },
     fetchingSuccess(state, action) {
       state.isLoading = false;
-      // state.error = null;
       state.items = action.payload;
     },
     fetchingError(state, action) {
