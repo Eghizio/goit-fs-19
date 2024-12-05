@@ -1,7 +1,12 @@
 import { Tabs } from "./Tabs/Tabs";
+import { SelectorNaming } from "./0-selector-naming/SelectorNaming";
+import { CombinedSelectors } from "./1-combined-selectors/CombinedSelectors";
+import { CreateSelector } from "./2-create-selector/CreateSelector";
 
 export const App = () => (
   <Tabs>
-    <h1>Redux Selector Optimalization</h1>
+    <SelectorNaming />
+    <CombinedSelectors />
+    <CreateSelector />
   </Tabs>
 );
