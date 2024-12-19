@@ -4,19 +4,19 @@ const Yellow = "\x1b[33m%s\x1b[0m";
 const Cyan = "\x1b[36m%s\x1b[0m";
 
 const Logger = {
-  async log(message) {
+  log(message) {
     console.log(Green, message);
   },
 
-  async error(message) {
+  error(message) {
     console.error(Red, message);
   },
 
-  async warn(message) {
+  warn(message) {
     console.warn(Yellow, message);
   },
 
-  async info(message) {
+  info(message) {
     console.info(Cyan, message);
   },
 };

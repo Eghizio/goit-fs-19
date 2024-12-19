@@ -1,5 +1,6 @@
-const { add, subtract, multiply, divide } = require("./math.js");
 const Logger = require("./Logger.js");
+const { add, subtract, multiply, divide } = require("./math.js");
+// const Math = require("./math.js");
 
 Logger.log(add(40, 2));
 
