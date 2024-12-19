@@ -1,6 +1,7 @@
+import fs from "node:fs";
 import * as commander from "commander";
 import readline from "readline";
-import fs from "fs";
+import colors from "colors";
 
 const getResultsFileName = () => {
   commander.program.option(
@@ -21,9 +22,9 @@ const lineReader = readline.createInterface({
   output: process.stdout,
 });
 
-console.log("Please provide a number!");
+console.log(colors.cyan("Please provide a number!"));
 
-const MAX = 1000;
+const MAX = 1_000;
 const SECRET_NUMBER = Math.round(Math.random() * MAX);
 
 let tries = 0;
@@ -33,17 +34,21 @@ lineReader.on("line", (answer) => {
 
   if (!isNumber(guess)) {
     return console.log(
-      `${answer} is not a number. Please provide a legit value...`
+      colors.red(`${answer} is not a number. Please provide a legit value...`)
     );
   }
 
   tries++;
 
   if (guess === SECRET_NUMBER) {
-    console.log(`Hooray! You've won! ${SECRET_NUMBER} was the secret number!`);
+    console.log(
+      colors.green(
+        `Hooray! You've won! ${SECRET_NUMBER} was the secret number!`
+      )
+    );
 
     const msg = `You guessed after ${tries} tries!`;
-    console.log(msg);
+    console.log(colors.rainbow(msg));
 
     fs.appendFileSync(
       getResultsFileName(),
@@ -53,6 +58,6 @@ lineReader.on("line", (answer) => {
     process.exit();
   }
 
-  if (guess < SECRET_NUMBER) console.log("More");
-  if (guess > SECRET_NUMBER) console.log("Less");
+  if (guess < SECRET_NUMBER) console.log(colors.magenta("More"));
+  if (guess > SECRET_NUMBER) console.log(colors.magenta("Less"));
 });
