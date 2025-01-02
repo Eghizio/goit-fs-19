@@ -23,6 +23,8 @@ const tasks = [
 
 - `[Optional]:` Create minimal Frontend for the application.
 
+- `[Optional]:` Add logging to file.
+
 - `[Experiment]:` Use a different file format for storing tasks (e.g. CSV).
 
 - `[Challenge]:` Add ENV variable API_KEY with some random value.
