@@ -58,6 +58,8 @@ app.delete("/books/:id", (req, res) => {
 
   if (!books.has(id)) return res.sendStatus(404);
 
+  const bookToDelete = books.get(id);
+
   books.delete(id);
 
   /*

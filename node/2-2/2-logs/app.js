@@ -18,13 +18,14 @@ const ourLogger = (req, res, next) => {
 // app.use(ourLogger);
 
 /* Logs are displayed in console */
-// app.use(morgan("dev")); /* Check ./logger.js for File and Rotating File logger with Morgan */
+// app.use(morgan("dev"));
+/* Check ./logger.js for File and Rotating File logger with Morgan */
 
 /* Abstracted */
 // app.use(createMorganLogger());
 // app.use(createMorganLogger(LoggerMode.CONSOLE));
 // app.use(createMorganLogger(LoggerMode.FILE));
-// app.use(createMorganLogger(LoggerMode.ROTATING_FILE));
+app.use(createMorganLogger(LoggerMode.ROTATING_FILE));
 
 app.get("/users", (req, res) => res.json({ users: ["Adam", "Beth", "Cecil"] }));
 app.get("/error", (req, res) => {

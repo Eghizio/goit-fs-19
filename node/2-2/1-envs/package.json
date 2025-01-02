@@ -9,7 +9,8 @@
     "start:dev": "dotenvx run -f .env.development -- node app.js",
     "env:export": "export API_KEY=\"HELLO_FROM_SYSTEM\"",
     "env:echo": "echo $API_KEY",
-    "env:unset": "unset API_KEY"
+    "env:unset": "unset API_KEY",
+    "env:copy": "cp .env.example .env.copied"
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^1.32.0",

@@ -4,9 +4,9 @@
 // import dotenv from "dotenv";
 // dotenv.config();
 
-// /* @dotenvx/dotenvx */
-// import dotenvX from "@dotenvx/dotenvx";
-// dotenvX.config();
+/* @dotenvx/dotenvx */
+import dotenvX from "@dotenvx/dotenvx";
+/* dotenvX.config(); */
 
 const SmsSender = ({ apiKey }) => {
   if (!apiKey) throw new Error("No API key provided!");
