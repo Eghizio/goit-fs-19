@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import express from "express";
 import colors from "colors";
 
@@ -34,7 +34,6 @@ app.post("/register", (req, res) => {
 
   console.log({ data });
 
-
   const isEmailTaken = !!users.find(({ email }) => email === data.email);
   if (isEmailTaken) return res.status(400).send("Email taken"); // OWASP
 
@@ -44,11 +43,8 @@ app.post("/register", (req, res) => {
   return res.status(201).json(sanitizeUser(createdUser));
 });
 
-
 // ADMIN ONLY
-app.get("/users", (req, res) => res.json({ users: users.map(sanitizeUser) }))
-
-
+app.get("/users", (req, res) => res.json({ users: users.map(sanitizeUser) }));
 
 const PORT = 3000;
 app.listen(PORT, () => {

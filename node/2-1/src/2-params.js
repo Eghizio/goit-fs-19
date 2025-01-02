@@ -5,7 +5,13 @@ const app = express();
 
 const users = ["Adam", "Beth", "Cecil"];
 
+app.get("/users", (req, res) => res.json(users));
+
 app.get("/users/:id/", (req, res) => {
+  /* ID 1.15 -> JSON {} */
+  // const userId = Number(req.params.id);
+
+  /* ID 1.15 -> JSON { name: "Beth" } */
   const userId = parseInt(req.params.id, 10);
 
   if (Number.isNaN(userId)) return res.sendStatus(400);
@@ -14,7 +20,9 @@ app.get("/users/:id/", (req, res) => {
 
   const requestedUser = users[userId];
 
-  return res.json({ name: requestedUser })
+  console.log(JSON.stringify({ name: requestedUser }));
+
+  return res.json({ name: requestedUser });
 });
 
 const PORT = 3000;
