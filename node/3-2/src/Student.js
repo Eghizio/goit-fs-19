@@ -21,3 +21,5 @@ const studentSchema = new Schema({
 });
 
 export const Student = mongoose.model("student", studentSchema);
+
+Student.clearAll = async () => Student.deleteMany();

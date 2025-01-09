@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const simpleStudentsSchema = new Schema({
   name: String,
@@ -7,7 +7,4 @@ const simpleStudentsSchema = new Schema({
   isAdmin: Boolean,
 });
 
-export const SimpleStudent = mongoose.model(
-  "simplestudent",
-  simpleStudentsSchema
-);
+export const SimpleStudent = model("simplestudent", simpleStudentsSchema);
