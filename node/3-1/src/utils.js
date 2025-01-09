@@ -4,7 +4,7 @@ const withDb = async (callback) => {
   const client = new MongoClient(process.env.MONGODB_URI);
   console.log("[utils] Connecting to the MongoDB...");
 
-  await client.connect(async (error) => {
+  await client.connect((error) => {
     if (error) return console.log("Ooopsie", error);
   });
   console.log("[utils] Connected to DB!");

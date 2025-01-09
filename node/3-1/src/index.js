@@ -10,10 +10,15 @@ const client = new MongoClient(MONGODB_URI);
 console.log("Connecting to the MongoDB...");
 
 /* Top Level Await for modules */
-await client.connect(async (error) => {
+await client.connect((error) => {
   if (error) return console.log("Ooopsie", error);
 });
 console.log("Connected to DB!");
+
+// await setupUsers();
+// await cleanupUsers();
+
+/* await client.close(); */
 
 /* Operating on collections */
 const displayCollections = async () => {
@@ -45,8 +50,15 @@ const findSomeUsers = async () => {
 };
 // await findSomeUsers();
 
+// const beths = await users.find({ name: "Beth" }).limit(4).toArray();
+// console.log({ beths });
+
+// const usersDocs = await users.find().toArray();
+// console.log({ usersDocs });
+
 const insertOneUser = async () => {
   const x = await users.insertOne({
+    // name: "Adam",
     name: "Beth",
     age: 456,
     books: ["First", "Second"],
@@ -58,7 +70,7 @@ const insertOneUser = async () => {
 
 const deleteOneUser = async () => {
   const d = await users.deleteOne({
-    _id: new ObjectId("6436fb62de1e093c5591cf64"),
+    _id: new ObjectId("67801e4f180677aaf36813c4"),
   });
   const dm = await users.deleteMany({ name: "Beth" });
   console.log({ d, dm });
@@ -74,8 +86,17 @@ const insertUser = async (user) => users.insertOne(user);
 // }).then(console.log);
 
 /* Custom MongoDB Collection Abstraction */
-// const Users = new MongoCollection(client, "users");
-// Users.count().then(console.log);
+const Users = new MongoCollection(client, "users");
+
+await Users.count().then(console.log);
+
+await Users.findOne({ name: "Cecil" }).then(console.log);
+
+await Users.insertMany([{ dupa: 123 }]);
+
+await Users.find({})
+  .then((f) => f.limit(20).toArray())
+  .then(console.log);
 
 /* Close the connection to the Database */
-// await client.close();
+await client.close();
