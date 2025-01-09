@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "dotenvx run -- node ./src/index.js",
+    "start:docker": "dotenvx run -f .env.docker -- node ./src/index.js",
+    "mongodb:atlas": "echo https://cloud.mongodb.com/",
+    "docker:mongodb:create": "docker run --name mongodb-goit-1 -d -p 27017:27017 -v $(pwd)/docker_volumes/data:/data/db mongo",
+    "docker:mongodb:start": "docker start mongodb-goit-1",
+    "docker:mongodb:stop": "docker stop mongodb-goit-1"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.32.1",
+    "mongodb": "^6.12.0"
+  }
+}
