@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "dotenvx run -- node ./src/index.js",
+    "start:docker": "dotenvx run -f .env.docker -- node ./src/index.js",
+    "mongodb:atlas": "echo https://cloud.mongodb.com/",
+    "docker:mongodb:create": "docker run --name mongodb-goit-flip -d -p 27017:27017 -v $(pwd)/docker_volumes/data:/data/db mongo",
+    "docker:mongodb:start": "docker start mongodb-goit-flip",
+    "docker:mongodb:stop": "docker stop mongodb-goit-flip"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.32.1",
+    "chalk": "^5.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
