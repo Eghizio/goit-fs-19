@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks MongoDB</title>
+    <script type="module" src="./script.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <h1>Tasks Dashboard - MongoDB</h1>
+
+    <main class="dashboard">
+      <section class="column">
+        <form id="create">
+          <h2>Create</h2>
+
+          <label for="text">
+            Text:
+            <input type="text" id="text" required />
+          </label>
+
+          <button type="submit" class="green">Create</button>
+        </form>
+
+        <form id="read">
+          <h2>Read</h2>
+
+          <label for="id">
+            ID:
+            <input type="text" id="id" required />
+          </label>
+
+          <button type="submit" class="orange">Read by ID</button>
+        </form>
+
+        <form id="update">
+          <h2>Update</h2>
+
+          <label for="id">
+            ID:
+            <input type="text" id="id" required />
+          </label>
+
+          <label for="title">
+            Text:
+            <input type="text" id="text" />
+          </label>
+
+          <label for="title">
+            Completed:
+            <input type="checkbox" id="completed" />
+          </label>
+
+          <button type="submit" class="blue">Update</button>
+        </form>
+
+        <form id="delete">
+          <h2>Delete</h2>
+
+          <label for="id">
+            ID:
+            <input type="text" id="id" required />
+          </label>
+
+          <button type="submit" class="red">Delete by ID</button>
+        </form>
+      </section>
+
+      <section class="column">
+        <button type="button" id="refresh" class="yellow">Refresh</button>
+        <ol id="read-all"></ol>
+      </section>
+    </main>
+  </body>
+</html>
