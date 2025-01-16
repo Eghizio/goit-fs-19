@@ -15,7 +15,7 @@ export const auth =
     }
 
     const tokenData = JWT.decode(token);
-    if (!tokenData?.data) {
+    if (!tokenData?.data?.id) {
       // return res.status(401).json({ error: "Malformed token." });
       return next(new HttpError(401, "Malformed token."));
     }

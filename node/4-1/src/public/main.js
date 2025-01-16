@@ -46,7 +46,6 @@ document
 
 document.querySelector("button#jwts").addEventListener("click", () =>
   Api.generateSomeJwt().then(({ token }) => {
-    console.log("token", { token });
     const parts = token.split(".");
     const decoded = parts.slice(0, 2).map((part) => atob(part));
     const jwt = { token, parts, decoded };

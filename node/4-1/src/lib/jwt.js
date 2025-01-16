@@ -7,7 +7,7 @@ const MONTH = 31 * 24 * 60 * 60; // seconds
 // https://www.npmjs.com/package/jsonwebtoken
 export class JWT {
   static async sign(data) {
-    const iat = Math.floor(Date.now() / 1000);
+    const iat = Math.floor(Date.now() / 1_000);
 
     const payload = { iat, data };
 

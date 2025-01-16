@@ -31,7 +31,7 @@ usersRouter.get("/", auth([UserRole.ADMIN]), async (req, res) => {
 });
 
 // Register.
-usersRouter.post("/", async (req, res) => {
+usersRouter.post("/", async (req, res, next) => {
   const { email, password } = req.body;
 
   const userWithEmail = await Users.findOne({ email });
@@ -73,7 +73,7 @@ usersRouter.post("/me", async (req, res, next) => {
 });
 
 // Get Current user.
-usersRouter.get("/me", auth(), async (req, res) => {
+usersRouter.get("/me", auth(), async (req, res, next) => {
   const user = await Users.findById(req?.userId);
 
   if (!user) {

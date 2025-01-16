@@ -10,7 +10,7 @@ class Config {
     this.#_MONGODB_URI = this.#getEnv("MONGODB_URI");
     this.#_JWT_SECRET = this.#getEnv("JWT_SECRET");
 
-    console.log(chalk.cyan("Config loaded."));
+    console.log(chalk.magenta("Config loaded."));
   }
 
   get PORT() {
@@ -30,7 +30,7 @@ class Config {
 
     if (!value) {
       if (defaultValue) return defaultValue;
-      throw new Error(`Environment variable ${name} is not set.`);
+      throw new Error(`Environment variable "${name}" is not set.`);
     }
 
     return value;
