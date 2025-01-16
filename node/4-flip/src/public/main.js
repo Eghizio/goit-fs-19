@@ -55,3 +55,27 @@ document.querySelector("button#jwts").addEventListener("click", () =>
     alert(JSON.stringify(jwt, null, 2));
   })
 );
+
+document.querySelector("button#notes").addEventListener("click", () =>
+  Api.getMyNotes().then((notes) => {
+    console.log(notes);
+    alert(JSON.stringify(notes, null, 2));
+  })
+);
+
+document
+  .querySelector("form#note")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+
+    const text = form.elements["text"].value;
+
+    const body = { text };
+
+    console.log(body);
+    await Api.addNote(body);
+
+    form.reset();
+  });

@@ -8,6 +8,8 @@ import { JWT } from "../lib/jwt.js";
 
 export const usersRouter = Router();
 
+const MONTH = 31 * 24 * 60 * 60 * 1_000; // Miliseconds.
+
 const hashPassword = async (pwd) => {
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(pwd, salt);
@@ -31,7 +33,7 @@ usersRouter.get("/", auth([UserRole.ADMIN]), async (req, res) => {
 });
 
 // Register.
-usersRouter.post("/", async (req, res) => {
+usersRouter.post("/", async (req, res, next) => {
   const { email, password } = req.body;
 
   const userWithEmail = await Users.findOne({ email });
@@ -66,6 +68,13 @@ usersRouter.post("/me", async (req, res, next) => {
   }
 
   const token = await JWT.sign({ id: user._id });
+  res.cookie("authorization", token, {
+    httpOnly: true,
+    sameSite: "strict",
+    maxAge: MONTH,
+    // signed: true,
+    // secure: true,
+  });
 
   console.log(chalk.green(`User logged in: ${user.email}`));
 
@@ -73,7 +82,7 @@ usersRouter.post("/me", async (req, res, next) => {
 });
 
 // Get Current user.
-usersRouter.get("/me", auth(), async (req, res) => {
+usersRouter.get("/me", auth(), async (req, res, next) => {
   const user = await Users.findById(req?.userId);
 
   if (!user) {

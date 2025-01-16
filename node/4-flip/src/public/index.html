@@ -42,11 +42,21 @@
         </form>
       </section>
 
-      <section>
+      <section class="column">
         <h2>Protected resources</h2>
         <button type="button" id="users">Get All Users</button>
 
         <button type="button" id="jwts">Generate some JWT</button>
+
+        <h3>Notes</h3>
+        <button type="button" id="notes">Get my Notes</button>
+
+        <form id="note">
+          <label>Note Text:</label>
+          <input type="text" name="text" required value="Long time ago..." />
+
+          <button type="submit">Add note</button>
+        </form>
       </section>
     </main>
   </body>
