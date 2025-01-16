@@ -10,7 +10,7 @@ class Config {
     this.#_MONGODB_URI = this.#getEnv("MONGODB_URI");
     this.#_JWT_SECRET = this.#getEnv("JWT_SECRET");
 
-    console.log(chalk.cyan("Config loaded."));
+    console.log(chalk.magenta("Config loaded."));
   }
 
   get PORT() {
