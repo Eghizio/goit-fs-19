@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "dotenvx run -- node ./src/index.js",
+    "mongodb:atlas": "echo https://cloud.mongodb.com/",
+    "docker:mongodb:create": "docker run --name goit-auth -d -p 27017:27017 -v $(pwd)/docker_volumes/data:/data/db mongo",
+    "docker:mongodb:start": "docker start goit-auth",
+    "docker:mongodb:stop": "docker stop goit-auth",
+    "secret:generate": "node -e \"import('crypto').then((m) => m.randomBytes(32).toString('hex')).then(console.log);\""
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.33.0",
+    "bcrypt": "^5.1.1",
+    "chalk": "^5.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1"
+  }
+}
