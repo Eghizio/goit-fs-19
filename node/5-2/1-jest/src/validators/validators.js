@@ -1,4 +1,4 @@
-const { reportResult } = require("./analytics");
+const { reportResult } = require("./analytics.js");
 
 const nameValidator = (name) => name.length >= 3 && name.length <= 32;
 
@@ -13,7 +13,8 @@ const userValidator = ({ name, age, email }) => {
   const isValid =
     nameValidator(name) && ageValidator(age) && emailValidator(email);
 
-  reportResult({ name, age, email }, isValid); // sending results to some analytics API (external dependency)
+  /* sending results to some analytics API (external dependency) */
+  reportResult({ name, age, email }, isValid);
 
   if (!isValid) throw new Error("Invalid user data!");
 

@@ -12,9 +12,11 @@ describe("plus", () => {
   it("should add 2 & 2", () => {
     // Given
     const expectedResult = 4;
+    const a = 2;
+    const b = 2;
 
     // When
-    const actualResult = plus(2, 2);
+    const actualResult = plus(a, b);
 
     // Then
     assert.strictEqual(actualResult, expectedResult);
@@ -34,3 +36,19 @@ describe("plus", () => {
 });
 
 // Todo: Implement remaining tests for math methods.
+
+describe("substract", () => {
+  [
+    { a: 2, b: 2, expected: 0 },
+    { a: 2, b: -2, expected: 4 },
+    { a: 2, b: -44, expected: 46 },
+    { a: 0, b: 0, expected: 0 },
+    { a: -2, b: -2, expected: 0 },
+  ].forEach(({ a, b, expected }) =>
+    it(`should substract ${a} and ${b} returning ${expected}`, () => {
+      const result = substract(a, b);
+
+      assert.strictEqual(result, expected);
+    })
+  );
+});

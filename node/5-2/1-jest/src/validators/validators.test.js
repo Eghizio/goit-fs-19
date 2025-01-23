@@ -1,5 +1,5 @@
-const validators = require("./validators");
-const { reportResult } = require("./analytics");
+const validators = require("./validators.js");
+const { reportResult } = require("./analytics.js");
 /* Jest globals: describe, test, it, expect etc. */
 
 /*
@@ -9,9 +9,9 @@ Because we only test validators logic here.
 And not the analytics module stuff that is coupled to that module.
 */
 
-jest.mock("./analytics", () => ({
+jest.mock("./analytics.js", () => ({
   reportResult: jest.fn(() => {
-    console.log("Mocked analytics");
+    console.log("\x1b[90m%s\x1b[0m", "Mocked analytics");
   }),
 }));
 
@@ -29,7 +29,7 @@ describe("validators", () => {
   });
 
   test.each([0, 1, 18, 42, 99, 105, 142])(
-    "should validate age $age to be within certain range",
+    "should validate age %i to be within certain range",
     (age) => {
       const result = validators.ageValidator(age);
 
@@ -44,7 +44,7 @@ describe("validators", () => {
     { email: "dupacom", expected: false },
     { email: "", expected: false },
   ])(
-    "should validate email $email to be containt certain characters",
+    `should validate email %s to be containt certain characters`,
     ({ email, expected }) => {
       const result = validators.emailValidator(email);
 
@@ -61,6 +61,11 @@ describe("validators", () => {
     }
   );
 
+  afterEach(() => {
+    /* Reset mocks between tests */
+    jest.resetAllMocks(); // cleanup
+  });
+
   test.each`
     name            | age    | email
     ${"Kuba"}       | ${42}  | ${"kuba@user.com"}
@@ -68,13 +73,18 @@ describe("validators", () => {
     ${"Mateusz"}    | ${140} | ${"mati@mail.test"}
     ${"Gugu"}       | ${0}   | ${"gugugaga@dupa.dupa"}
   `("should validate user with correct data", ({ name, age, email }) => {
+    /* Given */
     const user = { name, age, email };
+
+    /* When */
     const result = validators.userValidator(user);
 
-    expect(result).toBeTruthy();
+    /* Then */
+    // expect(result).toBeTruthy(); /* Redundant assertion. */
     expect(result).toBe(true);
 
     expect(reportResult).toHaveBeenCalled();
+    expect(reportResult).toHaveBeenCalledTimes(1); /* Requires mock reset */
     expect(reportResult).toHaveBeenCalledWith(user, result);
   });
 

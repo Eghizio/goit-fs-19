@@ -3,6 +3,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "chalk": "^5.4.1",
     "jest": "^29.7.0"
   }
 }
