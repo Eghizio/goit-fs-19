@@ -21,17 +21,24 @@ app.use(express.static(PUBLIC_DIRECTORY));
 app.use("/images", express.static(IMAGES_DIRECTORY));
 
 app.post("/upload", upload.single("picture"), async (req, res) => {
-  if (!req.file?.originalname) return res.sendStatus(400);
+  if (!req.file?.originalname) {
+    // return res.sendStatus(400);
+    return res.status(400).json({ message: "Invalid file" });
+  }
 
   const originalName = req.file.originalname;
 
-  console.log(chalk.blueBright`Uploading ${originalName} ...`);
+  console.log(chalk.blueBright(`Uploading ${originalName} ...`));
 
-  const targetFileName = path.join(IMAGES_DIRECTORY, originalName);
+  // const id = crypto.randomUUID();
+  // const targetName = `${Date.now()}_${id}_${originalName}`;
+  const targetName = `${Date.now()}_${originalName}`;
+
+  const targetFileName = path.join(IMAGES_DIRECTORY, targetName);
 
   try {
     /* simulate processing file */
-    await sleep(4000);
+    await sleep(4_000);
 
     /* move to permament bucket storage */
     await fs.rename(req.file.path, targetFileName);

@@ -5,9 +5,11 @@ import { UPLOAD_DIRECTORY } from "../config.js";
 const storage = multer.diskStorage({
   destination: UPLOAD_DIRECTORY,
   filename: (req, file, callback) => {
-    const date = Date.now();
+    const timestamp = Date.now();
     const id = nanoid();
-    const fileName = [date, id, file.originalname].join("_");
+    const fileName = [timestamp, id, file.originalname].join("_");
+
+    console.log(`Uploading "${fileName}"`);
 
     callback(null, fileName);
   },
@@ -16,6 +18,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, callback) => {
   const isForbiddenFile = !file.originalname.includes("monke");
+  // const isForbiddenFile = file.originalname.includes("monke");
 
   callback(null, isForbiddenFile);
 };

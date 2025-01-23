@@ -5,6 +5,11 @@
     type="image/x-icon"
   />
   <title>File upload</title>
+  <style>
+    img {
+      max-width: 500px;
+    }
+  </style>
 </head>
 
 <body>
@@ -14,12 +19,11 @@
   </form>
 
   <button id="load-btn" type="button">Reload images</button>
+
   <div id="imgs"></div>
 
   <script>
     const imagesList = document.querySelector("div#imgs");
-
-    const clearImagesList = () => (imagesList.textContent = "");
 
     const createImage = (src) => {
       const img = new Image();
@@ -33,7 +37,7 @@
       const fragment = document.createDocumentFragment();
 
       fragment.append(...images);
-      imagesList.appendChild(fragment);
+      imagesList.replaceChildren(fragment);
     };
 
     const getImages = async () => {
@@ -46,7 +50,7 @@
 
     const rerenderLatestImages = async () => {
       const srcs = await getImages();
-      clearImagesList();
+
       renderImages(srcs);
     };
 
