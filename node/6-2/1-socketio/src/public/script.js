@@ -50,15 +50,17 @@ document.querySelector("form#name-form").addEventListener("submit", (event) => {
   socket.emit("name", newName);
 });
 
-const msgInput = document.querySelector("input#msg");
+// const msgInput = document.querySelector("input#msg");
 document.querySelector("form#chat-form").addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const msg = msgInput.value.trim();
+  const msg = event.target.elements["msg"].value.trim();
+  // const msg = msgInput.value.trim();
   if (!msg) return;
 
   // socket.send({ name: name, message: msg, sent: Date.now() });
   socket.send(msg);
 
-  msgInput.value = "";
+  // msgInput.value = "";
+  event.target.reset();
 });

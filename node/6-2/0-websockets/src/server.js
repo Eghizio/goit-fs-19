@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import { WebSocketServer } from "ws";
 
 const port = 1337;
@@ -7,7 +6,7 @@ const server = new WebSocketServer({ port });
 const clients = new Map();
 
 server.on("connection", (socket) => {
-  const clientId = nanoid();
+  const clientId = crypto.randomUUID();
   console.log("\x1b[32m%s\x1b[0m", `Connected - ${clientId}`);
   socket.send(`Hello ${clientId}`);
 
@@ -28,5 +27,8 @@ server.on("connection", (socket) => {
 });
 
 server.once("listening", () =>
-  console.log(`WebSocket Server listening on port ${port}`)
+  console.log(
+    "\x1b[32m%s\x1b[0m",
+    `[server] WebSocket Server listening on port ${port}`
+  )
 );
