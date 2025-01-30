@@ -2,6 +2,7 @@ const endpoints = {
   nodemailer: "/api/v1/emails/nodemailer",
   sendgrid: "/api/v1/emails/sendgrid",
   ethereal: "/api/v1/emails/ethereal",
+  test: "/api/v1/emails/test",
 };
 
 document.querySelector("form").addEventListener("submit", async (event) => {

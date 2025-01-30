@@ -5,6 +5,7 @@ import { NodemailerEmailProvider } from "../EmailSender/EmailProvider/Nodemailer
 import { SendGridEmailProvider } from "../EmailSender/EmailProvider/SendGridEmailProvider.js";
 import { EtherealEmailProvider } from "../EmailSender/EmailProvider/EtherealEmailProvider.js";
 import { config } from "../config.js";
+import { TestEmailProvider } from "../EmailSender/EmailProvider/TestEmailProvider.js";
 
 export const api = Router();
 
@@ -27,7 +28,7 @@ const createEmailController = (emailSender) => async (req, res) => {
     console.error(error);
 
     return res
-      .status(400)
+      .status(500)
       .json({ error: `Failed to send email with subject "${subject}"` });
   }
 };
@@ -65,5 +66,13 @@ api.post(
       }),
       config.EMAIL_SENDER
     )
+  )
+);
+
+// Test implementation
+api.post(
+  "/emails/test",
+  createEmailController(
+    new EmailSender(new TestEmailProvider(), config.EMAIL_SENDER)
   )
 );

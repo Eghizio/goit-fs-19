@@ -9,7 +9,9 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => res.send("Hello World 👋"));
 app.get("/api/*", (req, res) => res.json({ time: new Date() }));
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () =>
+  console.log("\x1b[36m%s\x1b[0m", `Listening on port ${port}`)
+);
 
 /* Demo: Typo in Dockerfile CMD -> Fast rebuild thanks to caching. */
 /* Demo: Show dockerized Database + Web GUI ex. PgAdmin, PHPMyAdmin, DBeaver, Redis Insight */
