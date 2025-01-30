@@ -1,0 +1,14 @@
+input[type="text"],
+textarea {
+  width: 250px;
+}
+
+textarea {
+  height: 200px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
