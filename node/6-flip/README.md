@@ -7,4 +7,5 @@ Create a Chat application using Web Sockets (socket.io).
 Allow only logged in users to see the chat.
 Only verified users can send messages.
 
-[Optional]: Create private chats User to User (use Socket.io rooms)
+[Optional]: Create private chats User to User (use Socket.io rooms channels)
+[Challenge]: Secure room channels with password to join
